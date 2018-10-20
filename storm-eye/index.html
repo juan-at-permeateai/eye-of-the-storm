@@ -10,6 +10,11 @@
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--jacobs map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQW6cr-ABEBJuJYtvksOzlIgeAGmghhUE&callback=initMap"
+    async defer></script>
+  <script src="..\assets\data\refresh.js"></script>
+  <script src="js\map.js"></script>
 </head>
 <body>
   
@@ -31,8 +36,9 @@
 
 
   <div class="row">
-  <img src="media/imgHolder1.jpg" class="img-thumbnail" alt="imgHolder1" width="304" height="236">
   
+	<div id="map" style="height:500px"></div>
+	<div id="legend"><h3>Legend</h3></div>
   </div> 
 
 
@@ -96,6 +102,6 @@
     displaySummary();
 });
     </script>  
-
+	
 </body>
 </html>

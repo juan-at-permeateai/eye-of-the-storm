@@ -1,74 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-	<style>
-	<!-- source links arrow dosent work -->
-	#arrow {
-		content:url("right-arrow.svg")
-	}
-	</style>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQW6cr-ABEBJuJYtvksOzlIgeAGmghhUE&callback=initMap"
-    async defer></script>
-	<script src="svg.js"></script>
-	<!-- dummy data looking for ring array -->
-	<script src="..\assets\data\refresh.js"></script>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-	  #map .ControlContainer {
-		background-color: rgb(255, 255, 255);
-		border: 2px solid rgb(255, 255, 255);
-		border-radius: 3px;
-		box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 6px;
-		cursor: pointer;
-		margin-bottom: 22px;
-		text-align: center;
-	  }
-	  #map .MyControl {
-		color: rgb(25, 25, 25);
-		font-family: Roboto, Arial, sans-serif;
-		font-size: 16px;
-		line-height: 38px;
-		padding-left: 5px;
-		padding-right: 5px;
-	  }
-	  #map #legend {
-        font-family: Arial, sans-serif;
-        background: #fff;
-        padding: 10px;
-        margin: 10px;
-        border: 3px solid #000;
-      }
-      #map #legend h3 {
-        margin-top: 0;
-      }
-      #map #legend img {
-        vertical-align: middle;
-      }
-	  
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-	<div id="legend"><h3>Legend</h3></div>
-	
-    <script>
-		var map;
+var map;
 		var chicago = {lat: 41.85, lng: -87.65};
 		var myLatLng = {lat: 26.386417, lng:  -80.119680};
-		var array = [];		
+		var array = [];	
+		var speedContent = document.getElementById("speedContent");
+		var directionContent = document.getElementById("directionContent");
 
 		function initMap() {
 		
@@ -88,11 +23,12 @@
         var centerControl = new CenterControl(centerControlDiv, map);
         centerControlDiv.index = 1;
         map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
-        
+		
+		
 		var legend = document.getElementById('legend');
 		var div = document.createElement('div');
 		//idk if this should be html   *****************************update source
-		div.innerHTML = '<img id="arrow" src="right-arrow.svg"'+'height="20" width="32"' + '> ' + "wind speed";
+		div.innerHTML = '<img id="arrow" src="media/right-arrow.svg"'+'height="20" width="32"' + '> ' + "wind speed";
 		legend.appendChild(div);
 		  
 		map.controls[google.maps.ControlPosition.RIGHT_TOP].push(document.getElementById('legend'));
@@ -105,7 +41,8 @@
 			new google.maps.Marker({
 				icon:makeArrow(				
 					x.direction,
-					"#ff0000",
+					speedToColor(x.windSpeed),
+					//"#0FFF00",
 					true
 				),
 				position:{
@@ -119,10 +56,27 @@
 			).addListener('click',
 			function() {
 			//--------------------------------------------------------------------play video
-			
+				
 			})	
 		);
 		console.log(test);
+	  }
+	  function speedToColor(speed) {
+	  var max = 157;
+	  var min = 74;
+		if(speed > max) speed = max;
+		if(speed < min) speed = min;
+		speed -= min;
+		var r = (speed*(255/max)).toString(16).toUpperCase();
+		if(r.length == 1) r = "0"+r;
+		var g = ((max-speed)*(255/max)).toString(16).toUpperCase();
+		if(g.length == 1) g = "0"+g;
+		var anw = "#" +
+		r+
+		g+
+		"00";
+		console.log(anw);
+		return anw;
 	  }
 		/**
        * The CenterControl adds a control to the map that recenters the map on
@@ -268,7 +222,3 @@
         ]
     }
 ];
-    </script>
-
-  </body>
-</html>
