@@ -34,12 +34,12 @@
 		}, 500);
 	  }
 	  function addDummyMarkers() {
-	  var test = $.getJSON(
+	 /** var test = $.getJSON(
 		"../video1.json", function(data) {
 			console.log(data);
 		}
-	  );
-		test.map(x => 
+	  );**/
+		var test = result.map(x => 
 			new google.maps.Marker({
 				icon:makeArrow(				
 					x.direction,
