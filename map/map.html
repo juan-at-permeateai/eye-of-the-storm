@@ -4,6 +4,17 @@
     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
+	<style>
+	<!-- source links -->
+	#arrow {
+		content:url("right-arrow.svg")
+	}
+	</style>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQW6cr-ABEBJuJYtvksOzlIgeAGmghhUE&callback=initMap"
+    async defer></script>
+	<script src="svg.js"></script>
+	<!-- dummy data looking for ring array -->
+	<script src="..\assets\data\refresh.js"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -46,25 +57,21 @@
       #map #legend img {
         vertical-align: middle;
       }
+	  
     </style>
   </head>
   <body>
     <div id="map"></div>
 	<div id="legend"><h3>Legend</h3></div>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQW6cr-ABEBJuJYtvksOzlIgeAGmghhUE&callback=initMap"
-    async defer></script>
-	<script src="svg.js"></script>
+	
     <script>
 		var map;
 		var chicago = {lat: 41.85, lng: -87.65};
 		var myLatLng = {lat: 26.386417, lng:  -80.119680};
-		var array = [];
-		
-		
+		var array = [];		
 
 		function initMap() {
 		
-		console.log(typeof icons);
 		
         map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 14,
@@ -72,6 +79,8 @@
 			rotateControl: true,
 			streetViewControl: false,
 			fullscreenControl: false,
+			mapTypeControl: false,
+			styles : mapStyle,
         });
         // Create the DIV to hold the control and call the CenterControl()
         // constructor passing in this DIV.
@@ -83,12 +92,33 @@
 		var legend = document.getElementById('legend');
 		var div = document.createElement('div');
 		//idk if this should be html
-		div.innerHTML = '<img src="' + 'right-arrow.svg"'+'height="20" width="32"' + '"> ' + "wind speed";
+		div.innerHTML = '<img id="arrow"'+'height="20" width="32"' + '"> ' + "wind speed";
 		legend.appendChild(div);
 		  
 		map.controls[google.maps.ControlPosition.RIGHT_TOP].push(document.getElementById('legend'));
-      }
-	  
+		addDummyMarkers();
+	  }
+	  function addDummyMarkers() {
+		json.map(x => {
+			console.log(x.latitude);
+			console.log(x.longitude);
+			new google.maps.Marker(
+				makeMarker(
+					{
+						lng: x.longitude,
+						lat: x.latitude
+					},
+					"wind direction", 
+					x.windSpeed,
+					"#ff0000"			
+				)
+			).addListener('click',
+			function() {
+			//--------------------------------------------------------------------play video
+			
+			});	
+		});
+	  }
 	    /**
        * The CenterControl adds a control to the map that recenters the map on
        * Chicago.
@@ -117,15 +147,15 @@
         });
 
       }
-	  function makeMarker(position, title, rotation, color, width, height) {
+	  function makeMarker(position, title, rotation, color, clickable, width, height) {
 		return {
-          position: myLatLng,
-		  icon: makeArrow(rotation, color, width, height),
+          position: position,
+		  icon: makeArrow(rotation, color, clickable, width, height),
           map: map,
           title: title
         };
 	  }
-	  function makeArrow(rotation = 0, color = "black", path = 0, width = 20, height = 32) {
+	  function makeArrow(rotation = 0, color = "black", path = 0, clickable = true, width = 20, height = 32) {
 		var paths = [
 			"M21.205,5.007c-0.429-0.444-1.143-0.444-1.587,0c-0.429,0.429-0.429,1.143,0,1.571l8.047,8.047H1.111 C0.492,14.626,0,15.118,0,15.737c0,0.619,0.492,1.127,1.111,1.127h26.554l-8.047,8.032c-0.429,0.444-0.429,1.159,0,1.587c0.444,0.444,1.159,0.444,1.587,0l9.952-9.952c0.444-0.429,0.444-1.143,0-1.571L21.205,5.007z",
 		];
@@ -152,6 +182,86 @@
 			}
 		}, 200);	
 		}
+		var mapStyle = [
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#444444"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#f2f2f2"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#46bcec"
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    }
+];
     </script>
 
   </body>
