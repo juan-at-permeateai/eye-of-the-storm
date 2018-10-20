@@ -11,6 +11,7 @@ import random
 import imutils
 import time
 import cv2
+import json
 from math import log
 import numpy as np
 
@@ -18,6 +19,11 @@ def process_rects(rects):
    return True	
 
 
+def dump_json_file(data, filename_name):
+	outfile =  open(filename_name+".json", "w") 
+	json.dump(data, outfile)
+	outfile.close()
+	
 
 def wind_speed(rate):
    FACTOR = 0.8
@@ -60,6 +66,9 @@ ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="path to the video file")
 ap.add_argument("-a", "--min-area", type=int, default=500, help="minimum area size")
 ap.add_argument("-l", "--loop",  help="video on a loop")
+ap.add_argument("-x", "--long",  help="Longiture")
+ap.add_argument("-y", "--lat",   help="latitute")
+ap.add_argument("-n", "--name",  help="name")
 
 args = vars(ap.parse_args())
 
@@ -67,6 +76,10 @@ loop = True;
 
 MAX_N = 0;
 N     = MAX_N  # Skip every Nth FRame
+
+sequence_speed = []
+
+data_json = {"name" : "video1.mp4", "lat": "-90",  "long" : "-20",  "data" : sequence_speed }; 
 
 while loop:
 	if args.get("video", None) is None:
@@ -83,6 +96,24 @@ while loop:
 	#vidwrite = cv2.VideoWriter('outvideo.mp4', cv2.VideoWriter_fourcc(*'H', '2', '6', '4'), 25, 
         #   (width, height),True)
  
+	if args.get("name", None) is None:
+		data_json["name"] = "video1000"
+	else:
+		data_json["name"] = args["name"]
+
+
+	if args.get("lat", None) is None:
+                data_json["lat"] = "-90"
+	else:
+		data_json["lat"] = args["lat"]
+
+
+	if args.get("long", None) is None:
+                data_json["long"] = "-90"
+	else:
+		data_json["long"] = args["long"]
+
+		
 	if args.get("loop", None) is None:
 		loop = False;
 
@@ -91,6 +122,7 @@ while loop:
 	frame_id   =  0;
 	hmap       =  []
 	rects      =  []
+	means      =  []
 	prev_rate  =  0
   	# loop over the frames of the video
 	while True:
@@ -184,6 +216,14 @@ while loop:
 
 		text = "Detecting Hurricane Winds... " +str(rate)+"  in "+str(wind_speed((rate, prev_rate)))+" MPH";
 		prev_rate = rate
+		means.append(wind_speed((rate, prev_rate)));
+
+		if (len(means)>=30):
+			average_speed = np.mean(means);
+			data_json["data"].append(average_speed);
+			means=[]
+
+		
 		# print(rects)
 		# print(hmap)	
 
@@ -198,7 +238,7 @@ while loop:
 			(10, frame.shape[0] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
 
 
-		print ("Writing frame "+str(frame_id))
+		# print ("Writing frame "+str(frame_id))
 
 		# show the frame and record if the user presses a key
 		# frame = imutils.resize(frame, width=640, height=480)
@@ -215,6 +255,8 @@ while loop:
 		if key == ord("q"):
 			break
 
+
+dump_json_file(data_json, data_json["name"]);
 # cleanup the camera and close any open windows
 camera.release()
 vidwrite.release()
