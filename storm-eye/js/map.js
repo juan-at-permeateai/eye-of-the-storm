@@ -39,7 +39,7 @@
 			console.log(data);
 		}
 	  );**/
-		var test = result.map(x => 
+		var test = json.map(x => 
 			new google.maps.Marker({
 				icon:makeArrow(				
 					x.direction,
