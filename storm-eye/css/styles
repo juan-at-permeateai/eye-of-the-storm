@@ -1,0 +1,56 @@
+/*Global css*/
+body{
+	 color:#666666 !important; 
+	font-size:14px;
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight:300;
+}
+ul li{
+	list-style-type: none;
+}
+.pad-top{
+	padding-top:1em;
+}
+.pad-bottom{
+	padding-bottom:1em;
+}
+.mgn-bottom{
+	margin-bottom: 2em;
+}
+img{
+	max-width:100%;
+}
+.ubuntuFont{
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* BUTTON STYLES */
+	.aviorButton{
+		width: 14em;
+		padding: .75em 2.75em;
+		font-weight: 700;
+		font-size:14px;
+		border-width:2px;
+		background-color:transparent;
+	}
+		
+	a.blueStyle{ 
+		color:#56D1F5;
+		border:2px solid #56D1F5;
+	}
+	a.blueStyle:hover{ 
+		color:#FFFFFF;
+		border:2px solid #56D1F5;
+		background-color: #56D1F5;
+	}
+
+div.downChevron a{
+    color: #8C8C8C;
+    cursor: default;
+}
+.parallax-window {
+	    min-height: 45em;
+	    background: transparent;
+	}
+	
+

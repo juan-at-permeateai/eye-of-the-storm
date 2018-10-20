@@ -1,0 +1,9 @@
+FFMPEG commands to create Video feed from captured frames
+
+By running the wind_speed_detector.py
+=======================================
+python3 wind_speed_detector.py -l 0 --video /Users/edwinhm/anemometer/S.mp4 
+ffmpeg -r 20 -i videos/img%04d.jpg -c:v libx264  video1.mp4
+
+Pending create the JSON file with speed values and direction, location <lat, long> with timestamps
+
