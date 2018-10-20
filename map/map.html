@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
 	<style>
-	<!-- source links -->
+	<!-- source links arrow dosent work -->
 	#arrow {
 		content:url("right-arrow.svg")
 	}
@@ -91,35 +91,40 @@
         
 		var legend = document.getElementById('legend');
 		var div = document.createElement('div');
-		//idk if this should be html
-		div.innerHTML = '<img id="arrow"'+'height="20" width="32"' + '"> ' + "wind speed";
+		//idk if this should be html   *****************************update source
+		div.innerHTML = '<img id="arrow" src="right-arrow.svg"'+'height="20" width="32"' + '> ' + "wind speed";
 		legend.appendChild(div);
 		  
 		map.controls[google.maps.ControlPosition.RIGHT_TOP].push(document.getElementById('legend'));
-		addDummyMarkers();
+		setTimeout(function(){ 
+			addDummyMarkers();
+		}, 500);
 	  }
 	  function addDummyMarkers() {
-		json.map(x => {
-			console.log(x.latitude);
-			console.log(x.longitude);
-			new google.maps.Marker(
-				makeMarker(
-					{
+		var test = json.map(x => 
+			new google.maps.Marker({
+				icon:makeArrow(				
+					x.direction,
+					"#ff0000",
+					true
+				),
+				position:{
 						lng: x.longitude,
 						lat: x.latitude
-					},
-					"wind direction", 
-					x.windSpeed,
-					"#ff0000"			
-				)
+				},
+				map: map,
+				title:"wind direction",
+				animation: google.maps.Animation.DROP,
+				}
 			).addListener('click',
 			function() {
 			//--------------------------------------------------------------------play video
 			
-			});	
-		});
+			})	
+		);
+		console.log(test);
 	  }
-	    /**
+		/**
        * The CenterControl adds a control to the map that recenters the map on
        * Chicago.
        * This constructor takes the control DIV as an argument.
@@ -143,7 +148,7 @@
 
         // Setup the click event listeners: simply set the map to Chicago.
         controlUI.addEventListener('click', function() {
-          map.setCenter(myLatLng);
+			map.setCenter(myLatLng);
         });
 
       }
@@ -152,10 +157,11 @@
           position: position,
 		  icon: makeArrow(rotation, color, clickable, width, height),
           map: map,
-          title: title
+          title: title,
+		  animation: google.maps.Animation.DROP,
         };
 	  }
-	  function makeArrow(rotation = 0, color = "black", path = 0, clickable = true, width = 20, height = 32) {
+	  function makeArrow(rotation = 0, color = "black", clickable = true, width = 20, height = 32) {
 		var paths = [
 			"M21.205,5.007c-0.429-0.444-1.143-0.444-1.587,0c-0.429,0.429-0.429,1.143,0,1.571l8.047,8.047H1.111 C0.492,14.626,0,15.118,0,15.737c0,0.619,0.492,1.127,1.111,1.127h26.554l-8.047,8.032c-0.429,0.444-0.429,1.159,0,1.587c0.444,0.444,1.159,0.444,1.587,0l9.952-9.952c0.444-0.429,0.444-1.143,0-1.571L21.205,5.007z",
 		];
@@ -181,8 +187,8 @@
 				fun(0);
 			}
 		}, 200);	
-		}
-		var mapStyle = [
+	}
+	var mapStyle = [
     {
         "featureType": "administrative",
         "elementType": "labels.text.fill",
