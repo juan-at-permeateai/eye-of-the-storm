@@ -1,10 +1,7 @@
-var map;
+		var map;
 		var chicago = {lat: 41.85, lng: -87.65};
 		var myLatLng = {lat: 26.386417, lng:  -80.119680};
 		var array = [];	
-		var speedContent = document.getElementById("speedContent");
-		var directionContent = document.getElementById("directionContent");
-
 		function initMap() {
 		
 		
@@ -37,7 +34,12 @@ var map;
 		}, 500);
 	  }
 	  function addDummyMarkers() {
-		var test = json.map(x => 
+	  var test = $.getJSON(
+		"../video1.json", function(data) {
+			console.log(data);
+		}
+	  );
+		test.map(x => 
 			new google.maps.Marker({
 				icon:makeArrow(				
 					x.direction,
@@ -56,7 +58,12 @@ var map;
 			).addListener('click',
 			function() {
 			//--------------------------------------------------------------------play video
-				
+				$('#resultHolder').show();
+				document.getElementById("speedContent").innerHTML = x.windSpeed;
+				document.getElementById("directionContent").innerHTML = x.direction;
+				$('html, body').animate({
+				scrollTop: $('#resultHolder').offset().top
+				}, 1000);
 			})	
 		);
 		console.log(test);
