@@ -2,3 +2,4 @@ House Videos : 26.024436, -80.164521
 Beach condo videos : 25.991452, -80.117385
 Beach shore videos : 26.048154, -80.112769
 Pier : 26.015714, -80.131423 
+Office Depot: 26.404987, -80.120476
