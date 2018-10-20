@@ -1,0 +1,32 @@
+$(document).ready(function(){
+	$('.aviorHeader').on('click','.smoothScroll a[href^="#"]', function(e) {
+    e.preventDefault();
+    var target = this.hash;
+    var $target = $(target);
+    var scroll;
+    if($(window).scrollTop()==0){
+        scroll =  ($target.offset().top) - 10
+    }
+    else{
+        scroll =  ($target.offset().top) - 10
+    }
+    $('html, body').stop().animate({
+        'scrollTop': scroll
+    }, 400,"linear", function () {
+        window.location.hash = target;
+    });
+ });
+	
+//Mobile Menu
+$(".aviorHeader").on("click","#menuButton", function(){
+	  $('#closeBotton').toggle();
+	  $('#menuBars').toggle();
+	  $('ul#menuList').slideToggle(); 
+	  });
+$(".aviorHeader").on("click","ul#menuList li span.flRight", function(){
+	$("ul#menuList li.prodListM ul").toggle();
+  });
+});
+
+
+				
