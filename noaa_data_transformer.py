@@ -9,8 +9,8 @@ observations = n.get_observations('33432','US',
                                   start='2018-01-01',
                                   end='2018-10-12')
 #boca raton zip code: all NOAA capture dates seem to be on May 14 2018
-with open("noaa_boca_2018.json", "a") as write_file:
-    for observation in observations:
-        json.dump(observation, write_file)
-        
-
+with open("noaa_boca_2018.json", "w") as write_file:
+    some_dict = next(observations)
+        #observation.pop('@id', None)
+        #observation.pop('@type', None)
+    json.dump(some_dict, write_file, indent = 4)
