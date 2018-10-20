@@ -1,0 +1,282 @@
+
+/* BEGIN LARGE Desktop */
+
+ @media screen and (min-width: 1200px){ 
+ #clientempoweredImage{
+		margin-top:12em;
+	}
+ }
+ 
+ /* BEGIN  Desktop */
+ 
+@media (max-width:1199px)and (min-width:992px) { 
+ 
+	#clientempoweredImage{
+		margin-top: 1em; 
+	}
+	#healthcareConnected div.row,#simpleSeamless div.row{
+		margin-top:3em;
+	}
+}
+ /*END  Desktop */
+ 
+/*  Tablet */
+ @media screen and (max-width:991px)and (min-width:768px) {     
+	
+	#clientempoweredImage{
+		margin-top:1em;
+	}
+}     
+
+ /* BEGIN MOBILE */
+
+@media screen and (max-width:767px)and (min-width:320px) {
+	#healthcareImage,#simpleseamlessImg {
+		margin-top:1em;
+	}
+	.imageWrapper{
+ 	    padding:0px !important;
+ 	    }
+	 .imageWrapper{	
+	 	min-width: 235px;
+	 }
+	 .para-large{
+	 	padding-top:30px;
+	 }
+	
+ 	#aviorText>p:first-child {
+    	font-size: 2.25em !important;
+ 	} 
+}
+ 
+@media screen and (min-width:992px){
+.imageWrapper img{
+	max-width: 390px;
+}
+}
+ 
+/*  HOME PAGE STYLES */
+	
+ #section1{                          
+	border-bottom:2px solid #EDEDED;
+   } 
+      
+ #clientempoweredText>div>p:first-of-type {
+    margin-top: 1em;
+   }
+ #clientempoweredText{
+  	margin-top: 10em;
+      }
+      
+ #section1{
+	position:relative;
+}
+.introText{
+	margin-top: 2em;
+}
+	
+.introText p{
+	font-size: 2.75em;
+	margin-bottom: .75em;
+	color:#999999;
+	}
+
+.bar{
+	background-color: #999999;
+    width: 9em;
+    height: .1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+.introText>div:nth-child(4){
+	margin-top:-1.25em;
+	
+}
+.introText>div:nth-child(5){
+	margin-top:1.0em;
+	
+}
+	#logoDiv img {
+    max-width: 100%;
+    min-width: 12em;
+}
+   .imgWrap {
+    left: 10%;
+    right: 10%;
+    margin-top: 8em;
+    padding: 0 .75em;
+}
+ .imgCenter{
+	display:inline-block;
+	height:100%;
+	vertical-align:middle;
+}
+#healthcareSection,#seamlessSection{
+	padding-top: 2.5em;
+    background-color: #F9F9F9;
+    padding-bottom: 2.5em;
+	}
+	#healthcareSection>div p:first-of-type,#seamlessSection>div p:first-of-type{
+	font-size: 2.5em;
+    margin-bottom: .5em;
+    padding-top: 1em;
+	}
+	
+	.imageWrapper {
+		 padding: 40px;
+		 margin-top: 2.5em;
+	}
+.textWrapper h3{
+	font-weight: bold;
+    font-size: 25px;
+}
+
+.textWrapper{
+    padding-top: 20px;
+    margin-top: 2.5em;	        
+}
+
+#clientempoweredText>div>p:first-of-type{
+	font-size: 2.5em;
+}
+#productsTextsub1>p:first-of-type{
+	margin-top: 3em;
+    font-size: 2.5em;
+   }
+
+#clientempoweredText>div>p:nth-of-type(2), #clientempoweredText>div>p:last-of-type,#aviorText{
+	font-size: 1.25em;
+    line-height: 1.75em;
+}
+#clientempoweredText>div>p:last-of-type{
+	margin-bottom:3em;
+}
+#coloredPara{
+	font-size: 1.25em;
+	font-weight:500;
+	font-style: italic;
+}
+#coloredPara>span:first-child{
+	color:#FFB11D;
+}
+#coloredPara>span:nth-child(2){
+	color:#468AF7;
+}
+#coloredPara>span:nth-child(3){
+	color:#C096EA;
+}
+#coloredPara>span:last-child{
+	color:#40C07C;
+}
+.downChevron{
+	font-weight:200;
+}
+.square{
+	background-color:#FBF6EE;
+	padding: 2.5em 1em;
+	margin-top:1em;
+	font-size:1.0em;
+	opacity: .95;
+}
+.square p{
+	height:5.5em;
+}
+.square img{
+	height:4.3em;
+}
+
+#products a.btn{
+	font-size:1em;
+}
+.module{
+	margin-bottom:.5em;
+}
+.module-blue h3{
+	color:#6B9EF6;
+}
+.module-blue a.aviorButton {
+	color:#6B9EF6;
+	border-color:#6B9EF6;
+}
+.module-blue a.aviorButton:hover{
+	color: #FFFFFF;
+    background-color: #6B9EF6;
+}
+.module-orange h3{
+	color:#FEC765;
+}
+.module-orange a.aviorButton{
+	color:#FEC765;
+	border-color:#FEC765;
+}
+ .module-orange a.aviorButton:hover{
+ 	color: #FFFFFF;
+    background-color: #FEC765;
+ }
+.module-purple h3{
+	color:#B579E7;
+}
+.module-purple a.aviorButton {
+	color:#B579E7;
+	border-color:#B579E7;
+}
+.module-purple a.aviorButton:hover{
+	color: #FFFFFF;
+    background-color: #B579E7;
+	
+}
+.module-grey h3{
+	color:#747E8F;
+}
+.module-grey a.aviorButton{
+	color:#747E8F;
+	border-color:#747E8F;
+} 
+.module-grey a.aviorButton:hover{
+	color: #FFFFFF;
+    background-color: #747E8F;
+	
+}
+.module-green h3 {
+	color:#0FB362;
+}
+.module-green a.aviorButton{
+	color:#0FB362;
+	border-color:#0FB362;
+}
+.module-green a.aviorButton:hover{
+	color: #FFFFFF;
+	background-color:#0FB362;
+}
+#productsTextsub1{
+    margin-bottom: 6em;
+}
+
+#weareAvior{
+	background: url("../images/background-team.jpg") no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding-top:6em;
+}
+
+#aviorText>p:first-child{
+	font-size: 3.25em;
+    margin-bottom: .75em;
+}
+#ceoImg{
+
+	width:200px;
+	height:200px;
+	margin-left:auto;
+	margin-right:auto;  
+}
+#clientempoweredText>div>p:nth-of-type(2),#clientempoweredText>div>p:last-of-type {
+  	font-style:italic;
+}
+#clientempoweredText>div>p:first-of-type {
+    margin-top: 1em;
+} 
+        
+  
