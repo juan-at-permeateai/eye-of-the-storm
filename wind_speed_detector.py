@@ -1,8 +1,8 @@
 # USAGE
 # (c) 2018 - EDWIN A HERNANDEZ
 # For demonstration purposes only
-# python motion_detector.py
-# python motion_detector.py --video videos/example_01.mp4
+# python wind_speed_detector.py
+# python wind_speed_detector.py --video videos/example_01.mp4
 
 # import the necessary packages
 import argparse
@@ -18,8 +18,15 @@ def process_rects(rects):
    return True	
 
 
-def wind_speed(conts):
-   return True
+
+def wind_speed(rate):
+   FACTOR = 0.8
+   # (1-FACTOR)*Fn-1+ FACTOR* Mn
+   rate_to_use = (1-FACTOR)*rate[1] + FACTOR*rate[0];	
+   if (0 <= rate_to_use < 4.0):
+         return 150*rate_to_use/4.0;
+   else:
+         return 0.0
   
 def write_to_file(cv2, filename):
    print ("written...")
@@ -84,6 +91,7 @@ while loop:
 	frame_id   =  0;
 	hmap       =  []
 	rects      =  []
+	prev_rate  =  0
   	# loop over the frames of the video
 	while True:
 		# grab the current frame and initialize the occupied/unoccupied
@@ -173,7 +181,9 @@ while loop:
 	#			print(hmap)
 	#			exit;
 
-		text = "Detecting Hurricane Winds... " +str(rate)
+
+		text = "Detecting Hurricane Winds... " +str(rate)+"  in "+str(wind_speed((rate, prev_rate)))+" MPH";
+		prev_rate = rate
 		# print(rects)
 		# print(hmap)	
 
