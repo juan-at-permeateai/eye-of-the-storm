@@ -1,107 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-  <title>Eye of Storm</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <!--link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"-->
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!--jacobs map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQW6cr-ABEBJuJYtvksOzlIgeAGmghhUE&callback=initMap"
-    async defer></script>
-  <script src="..\assets\data\refresh.js"></script>
-  <script src="js\map.js"></script>
-</head>
-<body>
-  
-<div class="container text-center">
-  <div class="row">
-  	<img src="media/storm-logo.png" alt="storm-logo">
-  </div>
-  <div class="row">
-  	<h1>Eye of the Storm</h1>
-  </div>
-  <hr>
-  <div class="row">
-  	<h2>Track Wind Speed during Hurricane</h2>
-  </div>
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script>
+var map;
+function initialize() {
+    var latlng = [];
+    var marker  = [];
+    latlng[0] = new google.maps.LatLng(26.0244368, -80.1645212);
+    latlng[1] = new google.maps.LatLng(26.3453489, -80.2466852);
+    latlng[2] = new google.maps.LatLng(26.3453149, -80.2466853);
+    latlng[3] = new google.maps.LatLng(26.4051288, -80.1205341);
 
-  <div class="row">
-  	<h2>Lorem Ipsum</h2>
-  </div> 
+    myOptions = {
+      zoom: 10,
+      center: latlng[0],
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
 
-  <div class="row">
-  
-	<div id="map" style="height:500px"></div>
-	<div id="legend"><h3>Legend</h3></div>
-  </div> 
+    map = new google.maps.Map(document.getElementById("map"),myOptions)
+
+    var point = latlng[0]
+
+    marker[0] = new google.maps.Marker({
+        position: point,
+        map: map
+    })
+
+    google.maps.event.addListener(marker[0], "click", function(){
+        bubble = new google.maps.InfoWindow({
+          content: '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="480" height="390" src="https://www.youtube.com/embed/XGtCeieSBgY?rel=0" frameborder="0"></iframe>'
+        })
+        bubble.open(map, marker[0]);
+    })
+
+   marker[1] = new google.maps.Marker({
+        position: latlng[1],
+        map: map
+    })
+    google.maps.event.addListener(marker[1], "click", function(){
+        bubble = new google.maps.InfoWindow({
+          content: '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="480" height="390" src="https://www.youtube.com/embed/byyVCI71aow?rel=0" frameborder="0"></iframe>'
+        })
+        bubble.open(map, marker[1]);
+    })
 
 
+    marker[2] = new google.maps.Marker({
+        position: latlng[2],
+        map: map
+    })
+    google.maps.event.addListener(marker[2], "click", function(){
+        bubble = new google.maps.InfoWindow({
+          content: '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="480" height="390" src="https://www.youtube.com/embed/M5Yqf38BZFc?rel=0" frameborder="0"></iframe>'
+        })
+        bubble.open(map, marker[2]);
+    })
 
-<div class="row" style="margin-bottom:20px;">
-  <h2>Some text</h2>
-  <h4>Video And Summary</h4>
-  <div  id="embeddedVideo" class="col-sm-12 col-md-6 embed-responsive embed-responsive-16by9">
-    <!--iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe-->
-  </div>
-  <div class="col-sm-12 col-md-6" id="summary">Result Data</div>
-</div> 
+    marker[3] = new google.maps.Marker({
+        position: latlng[3],
+        map: map
+    })
+    google.maps.event.addListener(marker[3], "click", function(){
+        bubble = new google.maps.InfoWindow({
+          content: '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="480" height="390" src="https://www.youtube.com/embed/UN0o8CnHwE4?rel=0" frameborder="0"></iframe>'
+        })
+        bubble.open(map, marker[3]);
+    })
 
-
-<div class="row" style="margin-bottom:10px;"></div>
-
-
-
-    
-</div> <!--end container-->
-<footer>
-     <div class="container-fluid bg-primary py-3">
-    <div class="container">
-      <div>
-       
-       
-        <div class="row" style="text-align:center;">
-          <div class="d-inline-block">
-            <div class="col-sm-12 col-md-3 col-lg-3">
-              <a href="https://www.facebook.com/"><i style="color:white;" class="fa fa-2x fa-fw fa-facebook"></i>
-    </a>
-            </div>
-            <div class="col-sm-12 col-md-3 col-lg-3">
-              <a href="https://twitter.com/">
-                <i style="color:white;" class="fa fa-2x fa-fw fa-twitter"></i></a>
-            </div>
-
-            <div class="col-sm-12 col-md-3 col-lg-3">
-              <a href="https://www.linkedin.com/company/">
-                <i style="color:white;" class="fa fa-2x fa-fw fa-linkedin"></i></a>
-            </div>
-            <div class="col-sm-12 col-md-3 col-lg-3">
-              <a href="https://www.google.com/">
-                <i style="color:white;" class="fa fa-2x fa-fw fa-google"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-</footer>
-    <!--/.footer-->
-<p class="text-center"> Copyright © Eye of Storm Team 2018. All right reserved. </p>
-
-<!-- Page JS -->
-    <script src="js/main.js"></script>
-    
-    <script type="text/javascript">
-
-  $( document ).ready(function() {
-    displaySummary();
-});
-    </script>  
 	
+}
+</script>
+</head>
+<body onload="initialize();">
+  <div style="margin-bottom:10px;text-align: center;font-family:Arial, Helvetica, sans-serif"><h1 style="display: inline-block;"><img src="media/storm-logo.png" alt="logo" style="width:80px;height: 80px;margin-bottom: -20px;"></h1><h1 style="display: inline;"><span style="margin-top:-20px;">Calculate Storm Surge </span></h1></div>  
+  <div id="map" style="width: 1280px; height: 790px"></div>
+</div>
 </body>
 </html>
