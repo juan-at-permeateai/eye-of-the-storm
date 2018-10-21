@@ -73,19 +73,19 @@ class Detector:
         self.while_wrapper(vid3)
        
        
-    def while_wrapper (self, vid):     
-       while loop:
+    def while_wrapper (self, vid):
+        while loop:
             if "video" not in TypeArgs:
                    camera = cv2.VideoCapture(0)
                    time.sleep(0.25)
             else:
             	camera = cv2.VideoCapture(vid)
     
-    	w  = camera.get(3)   # float
-    	width = int(w)
-    	h = camera.get(4) # float
-    	height = int(h)
-    	print ("Dimensions = "+str(width)+"x"+str(height))
+            w  = camera.get(3)   # float
+            width = int(w)
+            h = camera.get(4) # float
+            height = int(h)
+        	  print ("Dimensions = "+str(width)+"x"+str(height))
     	#vidwrite = cv2.VideoWriter('outvideo.mp4', cv2.VideoWriter_fourcc(*'H', '2', '6', '4'), 25, 
             #   (width, height),True)
      
@@ -237,3 +237,5 @@ class Detector:
 test = Detector()
     
             
+
+			
