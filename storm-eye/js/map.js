@@ -61,7 +61,12 @@
 			//--------------------------------------------------------------------play video
 				$('#resultHolder').show();
 				$("#speedContent").html(forceWindSpeed(x));
-				$("#directionContent").html(getDirections(x));
+				$("#directionContent").html(getDirections(x));			
+				console.log(player);
+				var thing = x["url"].substring(17,x["url"].length);
+				player.loadVideoById(thing, 0, "large");
+				console.log(thing);
+				player.playVideo();
 				$('html, body').animate({
 				scrollTop: $('#resultHolder').offset().top
 				}, 1000);
