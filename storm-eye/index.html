@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyCsDlYUIVThQCPE-P8SPZPgpHIMjGkAZ7c&sensor=false"></script>
 <script>
 var map;
 function initialize() {
@@ -69,12 +69,48 @@ function initialize() {
         bubble.open(map, marker[3]);
     })
 
-	
+
+ // Define the LatLng coordinates for the polygon's path.
+        var redCoords = [
+        	{lat: 26.424400, lng: -80.121971},
+		{lat: 26.425640, lng: -80.055954},
+		{lat: 26.386645, lng: -80.065025},
+		{lat: 26.387162, lng: -80.121333}
+	  ];
+
+        // Construct the polygon.
+        var HighWindArea1= new google.maps.Polygon({
+          paths: redCoords,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35
+        });
+        HighWindArea1.setMap(map);
+   
+	var greenCoords = [
+		{lat: 26.387162, lng: -80.121333},
+		{lat: 26.387800, lng: -80.171132},
+		{lat: 26.681371, lng: -80.201388},
+		{lat: 26.678396, lng: -80.113305}
+         ];
+
+        // Construct the polygon.
+        var HighWindArea2= new google.maps.Polygon({
+          paths: greenCoords,
+          strokeColor: '#00FF00',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#00FF00',
+          fillOpacity: 0.35
+        });
+
+        HighWindArea2.setMap(map);	
 }
 </script>
 </head>
 <body onload="initialize();">
-  <div style="margin-bottom:10px;text-align: center;font-family:Arial, Helvetica, sans-serif"><h1 style="display: inline-block;"><img src="media/storm-logo.png" alt="logo" style="width:80px;height: 80px;margin-bottom: -20px;"></h1><h1 style="display: inline;"><span style="margin-top:-20px;">Calculate Storm Surge </span></h1></div>  
   <div id="map" style="width: 1280px; height: 790px"></div>
 </div>
 </body>
