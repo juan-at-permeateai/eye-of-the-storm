@@ -41,7 +41,7 @@ function initialize() {
     })
     google.maps.event.addListener(marker[1], "click", function(){
         bubble = new google.maps.InfoWindow({
-          content: '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="480" height="390" src="https://www.youtube.com/embed/byyVCI71aow?rel=0" frameborder="0"></iframe>'
+          content: '<iframe title="page1" type="text/html" width="480" height="390" src="../page1.html" frameborder="0"></iframe>'
         })
         bubble.open(map, marker[1]);
     })
@@ -53,7 +53,8 @@ function initialize() {
     })
     google.maps.event.addListener(marker[2], "click", function(){
         bubble = new google.maps.InfoWindow({
-          content: '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="480" height="390" src="https://www.youtube.com/embed/M5Yqf38BZFc?rel=0" frameborder="0"></iframe>'
+content: '<iframe title="page1" type="text/html" width="480" height="390" src="../page2.html" frameborder="0"></iframe>'
+          
         })
         bubble.open(map, marker[2]);
     })
@@ -64,7 +65,7 @@ function initialize() {
     })
     google.maps.event.addListener(marker[3], "click", function(){
         bubble = new google.maps.InfoWindow({
-          content: '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="480" height="390" src="https://www.youtube.com/embed/UN0o8CnHwE4?rel=0" frameborder="0"></iframe>'
+          content: '<iframe type="text/html" width="480" height="390" src="../page3.html" frameborder="0"></iframe>'
         })
         bubble.open(map, marker[3]);
     })

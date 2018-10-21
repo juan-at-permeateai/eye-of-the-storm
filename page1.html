@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	var i=0;
+   var timing=[40.767130439005435, 41.3127704607484, 66.82688492063492, 91.33333333333333, 91.65029761904762, 76.27827380952381, 80.07589285714285, 79.13244047619047, 76.10267857142857, 77.6875, 57.72023809523809, 76.35416666666667, 61.569940476190474, 65.81696428571429, 57.27529761904761, 78.22916666666667, 69.86160714285714, 87.47916666666667, 73.93154761904762, 56.410714285714285, 37.9375, 72.8125, 76.53571428571428, 78.70089285714286, 67.75094696969697, 63.70982142857143, 47.28125, 54.220238095238095];
+
+$(document).ready(function(){
+	myFunction1();
+ 
+
+});
+
+
+function myFunction1() {
+    setInterval(function(){ myFunction(); }, 1000);
+}
+
+   function myFunction(){
+   i++;
+        var switchTime = timing[i];
+        $("#speedHolder").html(switchTime);
+
+    if(i==timing.length-1) {
+    	i=0;
+    }   
+
+   }
+
+</script>
+</head>
+<body>
+
+<div class="container">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/XGtCeieSBgY?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<div class="col-md-7" style="padding:10px;background-color:#c0c0c033;font-weight:bold;"><span style="font-size: 20px;font-weight:bold;" class="btn col-md-4">Speed:</span><span style="font-size:20px;" class="col-md-8 btn btn-warning" id="speedHolder"></span></div>
+
+</div>
+
+</body>
+</html>
